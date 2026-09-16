@@ -81,11 +81,30 @@
     .mbtn.muted .sbar span { animation:none !important; height:2.5px !important; }
     @keyframes sw { 0%{height:3px} 100%{height:16px} }
 
-    /* POLAROID */
+    /* POLAROID & SHUFFLE ANIMATION */
     .polaroid {
-      background:#fff; padding:10px 10px 18px;
+      background:#fff; padding:12px 12px 18px;
       box-shadow: 0 16px 36px -8px rgba(23,40,70,.2), 0 2px 10px rgba(0,0,0,.06);
-      border-radius:2px; position:relative; transition:transform .5s;
+      border-radius:2px; position:relative; transition: transform .45s cubic-bezier(.25,1,.5,1);
+      will-change: transform, opacity;
+    }
+    .polaroid.shuffle-next {
+      animation: polaroidShuffleNext .5s cubic-bezier(.25,1,.5,1) forwards;
+    }
+    .polaroid.shuffle-prev {
+      animation: polaroidShufflePrev .5s cubic-bezier(.25,1,.5,1) forwards;
+    }
+    @keyframes polaroidShuffleNext {
+      0%   { transform: translateX(0) rotate(var(--rot-from, -1.5deg)) scale(1); box-shadow: 0 16px 36px -8px rgba(23,40,70,.2); }
+      40%  { transform: translateX(52px) translateY(-8px) rotate(8deg) scale(0.91); opacity: 0.55; box-shadow: 0 24px 44px -4px rgba(23,40,70,.35); }
+      70%  { transform: translateX(-16px) translateY(4px) rotate(-4deg) scale(0.98); opacity: 0.95; }
+      100% { transform: translateX(0) translateY(0) rotate(var(--rot-to, 1.5deg)) scale(1); opacity: 1; box-shadow: 0 16px 36px -8px rgba(23,40,70,.2); }
+    }
+    @keyframes polaroidShufflePrev {
+      0%   { transform: translateX(0) rotate(var(--rot-from, 1.5deg)) scale(1); box-shadow: 0 16px 36px -8px rgba(23,40,70,.2); }
+      40%  { transform: translateX(-52px) translateY(-8px) rotate(-8deg) scale(0.91); opacity: 0.55; box-shadow: 0 24px 44px -4px rgba(23,40,70,.35); }
+      70%  { transform: translateX(16px) translateY(4px) rotate(4deg) scale(0.98); opacity: 0.95; }
+      100% { transform: translateX(0) translateY(0) rotate(var(--rot-to, -1.5deg)) scale(1); opacity: 1; box-shadow: 0 16px 36px -8px rgba(23,40,70,.2); }
     }
     .polaroid-tape {
       position:absolute; top:-12px; left:50%; transform:translateX(-50%);
@@ -150,21 +169,33 @@
 <div id="eo" style="position:fixed;inset:0;z-index:100;background:#000;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:opacity .9s cubic-bezier(.4,0,.2,1);">
   <video id="ev" src="./assets/intro-video.mp4" style="width:100%;height:100%;object-fit:cover;" playsinline preload="auto"></video>
   
-  <!-- Top Logo on Video -->
-  <div id="eo-top" style="position:absolute;top:clamp(24px,5.5dvh,48px);left:0;right:0;display:flex;flex-direction:column;align-items:center;z-index:10;pointer-events:none;text-align:center;padding:0 16px;transition:opacity .6s ease;">
-    <img src="./assets/au-monogram.png" alt="AU Monogram" class="animate-float"
-      style="width:clamp(88px,23vw,118px);height:clamp(88px,23vw,118px);object-fit:contain;filter:drop-shadow(0 4px 18px rgba(201,157,78,.65));"/>
-    <h2 class="fs" style="font-size:clamp(28px,7.5vw,38px);color:#ffffff;margin:6px 0 2px;line-height:1.1;text-shadow:0 2px 14px rgba(0,0,0,.9), 0 0 24px rgba(201,157,78,.7);font-weight:400;">
-      Amisha <span style="font-size:.75em;color:var(--gold-soft);font-style:italic;">&amp;</span> Utkarsh
-    </h2>
-    <p class="fc" style="font-size:clamp(9.5px,2.5vw,12px);letter-spacing:.26em;color:#f3d081;font-weight:700;margin:0;text-shadow:0 2px 8px rgba(0,0,0,.9);">
-      WEDDING INVITATION
-    </p>
+  <!-- Top Logo & Text on Video — Improvised with Royal Glassmorphism Card for 100% Readability -->
+  <div id="eo-top" style="position:absolute;top:clamp(18px,4.5dvh,38px);left:0;right:0;display:flex;flex-direction:column;align-items:center;z-index:10;pointer-events:none;text-align:center;padding:0 14px;transition:opacity .6s ease;">
+    <div style="background:rgba(14,24,44,0.78);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1.5px solid rgba(201,157,78,0.8);border-radius:24px;padding:clamp(12px,2.4dvh,18px) clamp(16px,4.5vw,28px);box-shadow:0 14px 40px rgba(0,0,0,0.7), inset 0 0 18px rgba(201,157,78,0.22);max-width:340px;width:92%;display:flex;flex-direction:column;align-items:center;">
+      
+      <!-- New Royal Monogram in Gold-Framed Medallion -->
+      <div style="width:clamp(86px,23vw,112px);height:clamp(86px,23vw,112px);border-radius:18px;overflow:hidden;border:1.5px solid var(--gold);box-shadow:0 6px 20px rgba(201,157,78,0.5), inset 0 0 10px rgba(0,0,0,0.15);background:#fff;padding:2px;display:flex;align-items:center;justify-content:center;margin-bottom:6px;">
+        <img src="./assets/au-royal-logo.jpg" alt="AU Royal Logo" style="width:100%;height:100%;object-fit:cover;border-radius:14px;"/>
+      </div>
+
+      <!-- Couple Names with maximum contrast & golden aura -->
+      <h2 class="fs" style="font-size:clamp(30px,8vw,42px);color:#ffffff;margin:2px 0 2px;line-height:1.15;font-weight:500;text-shadow:0 2px 14px rgba(0,0,0,0.95), 0 0 24px rgba(201,157,78,0.85);">
+        Amisha <span style="font-size:.75em;color:var(--gold-soft);font-style:italic;">&amp;</span> Utkarsh
+      </h2>
+
+      <!-- Subtle gold divider -->
+      <div class="gd" style="width:110px;margin:2px auto 3px;"><span class="l"></span><span class="g" style="font-size:7px;">♥</span><span class="l"></span></div>
+
+      <!-- Wedding Invitation subtitle -->
+      <p class="fc" style="font-size:clamp(9.5px,2.5vw,12px);letter-spacing:.28em;color:#f3d081;font-weight:700;margin:0;text-shadow:0 2px 8px rgba(0,0,0,0.9);">
+        WEDDING INVITATION
+      </p>
+    </div>
   </div>
 
-  <div id="eo-prompt" style="position:absolute;bottom:clamp(38px,6.5dvh,58px);left:0;right:0;display:flex;justify-content:center;pointer-events:none;z-index:10;transition:opacity .4s ease;">
-    <div style="padding:11px 26px;border-radius:100px;background:rgba(23,40,70,.85);backdrop-filter:blur(10px);border:1.5px solid var(--gold);color:#fff;font-family:var(--font-c);font-size:clamp(9.5px,2.5vw,12px);letter-spacing:.28em;animation:pulse 2s infinite;display:flex;align-items:center;gap:8px;box-shadow:0 6px 22px rgba(0,0,0,.5), 0 0 18px rgba(201,157,78,.4);">
-      <svg style="width:15px;height:15px;color:#fcd34d;animation:bounce .8s ease-in-out infinite alternate;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 19v-8.93a2 2 0 01.89-1.664l7-4.666a2 2 0 012.22 0l7 4.666A2 2 0 0121 10.07V19M3 19a2 2 0 002 2h14a2 2 0 002-2M3 19l6.75-4.5M21 19l-6.75-4.5M3 10l6.75 4.5M21 10l-6.75 4.5m0 0l-1.14.76a2 2 0 01-2.22 0L10.25 14.5"/></svg>
+  <div id="eo-prompt" style="position:absolute;bottom:clamp(32px,5.5dvh,50px);left:0;right:0;display:flex;justify-content:center;pointer-events:none;z-index:10;transition:opacity .4s ease;">
+    <div style="padding:12px 28px;border-radius:100px;background:rgba(14,24,44,0.9);backdrop-filter:blur(12px);border:1.5px solid var(--gold);color:#ffffff;font-family:var(--font-c);font-size:clamp(9.5px,2.5vw,12px);letter-spacing:.28em;animation:pulse 2s infinite;display:flex;align-items:center;gap:9px;box-shadow:0 8px 28px rgba(0,0,0,.65), 0 0 20px rgba(201,157,78,.55);font-weight:700;">
+      <svg style="width:16px;height:16px;color:#fcd34d;animation:bounce .8s ease-in-out infinite alternate;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 19v-8.93a2 2 0 01.89-1.664l7-4.666a2 2 0 012.22 0l7 4.666A2 2 0 0121 10.07V19M3 19a2 2 0 002 2h14a2 2 0 002-2M3 19l6.75-4.5M21 19l-6.75-4.5M3 10l6.75 4.5M21 10l-6.75 4.5m0 0l-1.14.76a2 2 0 01-2.22 0L10.25 14.5"/></svg>
       TAP TO OPEN INVITATION
     </div>
   </div>
@@ -208,8 +239,8 @@
 
     <!-- Monogram (Enlarged to match Image 2) -->
     <div class="ri ri-dn" data-delay="100" style="display:flex;justify-content:center;width:100%;">
-      <img src="./assets/au-monogram.png" alt="A U Monogram" class="animate-float"
-        style="width:clamp(120px,32vw,155px);height:clamp(120px,32vw,155px);object-fit:contain;filter:drop-shadow(0 4px 18px rgba(201,157,78,.55));"/>
+      <img src="./assets/au-royal-logo.jpg" alt="A U Royal Monogram" class="animate-float"
+        style="width:clamp(120px,32vw,155px);height:clamp(120px,32vw,155px);object-fit:contain;mix-blend-mode:multiply;filter:drop-shadow(0 4px 16px rgba(201,157,78,.45));"/>
     </div>
 
     <!-- Names & Date Block (Enlarged to match Image 2) -->
@@ -332,8 +363,8 @@
         <!-- CENTER DIVIDER WITH AU MONOGRAM (ENLARGED TO MATCH IMAGE 1) -->
         <div style="display:flex;flex-direction:column;align-items:center;align-self:stretch;justify-content:center;padding:0 2px;">
           <div style="width:1px;flex:1;background:linear-gradient(to bottom,transparent,var(--gold) 20%,var(--gold) 80%,transparent);"></div>
-          <img src="./assets/au-monogram.png" alt="AU" class="animate-float"
-            style="width:clamp(56px,15vw,70px);height:clamp(56px,15vw,70px);object-fit:contain;margin:4px 0;filter:drop-shadow(0 3px 10px rgba(201,157,78,.5));"/>
+          <img src="./assets/au-royal-logo.jpg" alt="AU" class="animate-float"
+            style="width:clamp(58px,16vw,72px);height:clamp(58px,16vw,72px);object-fit:contain;mix-blend-mode:multiply;margin:4px 0;filter:drop-shadow(0 3px 8px rgba(201,157,78,.4));"/>
           <div style="width:1px;flex:1;background:linear-gradient(to top,transparent,var(--gold) 20%,var(--gold) 80%,transparent);"></div>
         </div>
 
@@ -403,15 +434,19 @@
           <div id="frame" class="polaroid" style="transform:rotate(-1.5deg);padding:12px 12px 18px;">
             <div class="polaroid-tape" style="width:72px;height:24px;"></div>
             <div style="position:relative;width:100%;aspect-ratio:3/3.7;overflow:hidden;background:#f0ece6;margin-top:4px;border-radius:3px;box-shadow:inset 0 0 8px rgba(0,0,0,.08);">
-              <img src="./assets/story-1.jpg" alt="Story" class="si" data-c="From that first smile to a lifetime of love ♡" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .5s;opacity:1;"/>
-              <img src="./assets/story-2.jpg" alt="Story" class="si" data-c="Every step leading us closer together ♡" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .5s;opacity:0;"/>
-              <img src="./assets/story-3.jpg" alt="Story" class="si" data-c="Hand in hand through every season ♡" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .5s;opacity:0;"/>
-              <img src="./assets/story-4.jpg" alt="Story" class="si" data-c="Our greatest adventure begins now ♡" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .5s;opacity:0;"/>
+              <img src="./assets/story-1.jpg" alt="Story" class="si" data-c="From that first smile to a lifetime of love ♡" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .4s ease;opacity:1;"/>
+              <img src="./assets/story-2.jpg" alt="Story" class="si" data-c="Every step leading us closer together ♡" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .4s ease;opacity:0;"/>
+              <img src="./assets/story-3.jpg" alt="Story" class="si" data-c="Hand in hand through every season ♡" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .4s ease;opacity:0;"/>
+              <img src="./assets/story-4.jpg" alt="Story" class="si" data-c="Our greatest adventure begins now ♡" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .4s ease;opacity:0;"/>
+              <img src="./assets/story-5.jpg" alt="Story" class="si" data-c="Dancing through every gentle rain with you ♡" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .4s ease;opacity:0;"/>
+              <img src="./assets/story-6.jpg" alt="Story" class="si" data-c="Sunshine, laughter, and endless conversations ♡" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .4s ease;opacity:0;"/>
             </div>
-            <p id="cap" class="fs" style="font-size:clamp(16px,4.6vw,21px);color:#172846;text-align:center;margin:10px 0 2px;line-height:1.3;transition:opacity .3s;font-weight:600;">From that first smile to a lifetime of love ♡</p>
+            <p id="cap" class="fs" style="font-size:clamp(16px,4.6vw,21px);color:#172846;text-align:center;margin:10px 0 2px;line-height:1.3;transition:opacity .3s, transform .3s;font-weight:600;">From that first smile to a lifetime of love ♡</p>
           </div>
           <div id="dots" style="display:flex;justify-content:center;gap:7px;margin-top:10px;">
             <span style="width:8px;height:8px;border-radius:50%;background:#172846;transition:all .3s;"></span>
+            <span style="width:8px;height:8px;border-radius:50%;background:var(--gold-soft);transition:all .3s;"></span>
+            <span style="width:8px;height:8px;border-radius:50%;background:var(--gold-soft);transition:all .3s;"></span>
             <span style="width:8px;height:8px;border-radius:50%;background:var(--gold-soft);transition:all .3s;"></span>
             <span style="width:8px;height:8px;border-radius:50%;background:var(--gold-soft);transition:all .3s;"></span>
             <span style="width:8px;height:8px;border-radius:50%;background:var(--gold-soft);transition:all .3s;"></span>
@@ -539,8 +574,8 @@
 
       <!-- AU Monogram -->
       <div style="display:flex;justify-content:center;margin-bottom:6px;">
-        <img src="./assets/au-monogram.png" alt="AU" class="animate-float"
-          style="width:clamp(72px,19vw,92px);height:clamp(72px,19vw,92px);object-fit:contain;filter:drop-shadow(0 3px 10px rgba(201,157,78,.45));"/>
+        <img src="./assets/au-royal-logo.jpg" alt="AU Royal Logo" class="animate-float"
+          style="width:clamp(80px,21vw,102px);height:clamp(80px,21vw,102px);object-fit:contain;mix-blend-mode:multiply;filter:drop-shadow(0 3px 10px rgba(201,157,78,.4));"/>
       </div>
 
       <!-- Header -->
@@ -783,25 +818,64 @@ document.addEventListener("DOMContentLoaded", function() {
   }
   tick(); setInterval(tick,1000);
 
-  /* ─── 5. STORY CAROUSEL ───────────────────── */
+  /* ─── 5. STORY CAROUSEL WITH CARD SHUFFLE ANIMATION ─── */
   var slides=document.querySelectorAll(".si"), dotsEl=document.getElementById("dots"),
       capEl=document.getElementById("cap"), frameEl=document.getElementById("frame"),
       deckEl=document.getElementById("deck"), cur=0, tot=slides.length;
+  var tilts=[-2, 2.2, -1.5, 1.8, -2.2, 1.4];
+  var isAnimating=false;
 
-  function show(n){
-    cur=(n+tot)%tot;
-    slides.forEach(function(s,i){ s.style.opacity=i===cur?"1":"0"; });
-    if(capEl) capEl.textContent=slides[cur].getAttribute("data-c")||"";
-    if(dotsEl){
-      Array.from(dotsEl.children).forEach(function(d,i){
-        d.style.background=i===cur?"#172846":"var(--gold-soft)";
-        d.style.transform=i===cur?"scale(1.25)":"scale(1)";
-      });
+  function show(n, dir){
+    if(isAnimating) return;
+    var nextIdx=(n+tot)%tot;
+    if(nextIdx===cur) return;
+    if(!dir) dir = (n > cur || (cur===tot-1 && nextIdx===0)) ? "next" : "prev";
+    
+    isAnimating=true;
+    var fromRot = tilts[cur];
+    var toRot = tilts[nextIdx];
+    
+    if(frameEl){
+      frameEl.style.setProperty("--rot-from", fromRot + "deg");
+      frameEl.style.setProperty("--rot-to", toRot + "deg");
+      frameEl.classList.remove("shuffle-next", "shuffle-prev");
+      void frameEl.offsetWidth;
+      frameEl.classList.add(dir === "next" ? "shuffle-next" : "shuffle-prev");
     }
+
+    if(capEl){
+      capEl.style.opacity = "0";
+      capEl.style.transform = "translateY(4px)";
+    }
+
+    setTimeout(function(){
+      cur = nextIdx;
+      slides.forEach(function(s,i){ s.style.opacity=i===cur?"1":"0"; });
+      if(capEl){
+        capEl.textContent = slides[cur].getAttribute("data-c")||"";
+        capEl.style.opacity = "1";
+        capEl.style.transform = "translateY(0)";
+      }
+      if(dotsEl){
+        Array.from(dotsEl.children).forEach(function(d,i){
+          d.style.background = i===cur?"#172846":"var(--gold-soft)";
+          d.style.transform = i===cur?"scale(1.25)":"scale(1)";
+        });
+      }
+    }, 180);
+
+    setTimeout(function(){
+      if(frameEl){
+        frameEl.classList.remove("shuffle-next", "shuffle-prev");
+        frameEl.style.transform = "rotate(" + toRot + "deg)";
+      }
+      isAnimating = false;
+    }, 500);
   }
+
   var pb=document.getElementById("pb"), nb=document.getElementById("nb");
-  if(pb) pb.addEventListener("click",function(){ show(cur-1); });
-  if(nb) nb.addEventListener("click",function(){ show(cur+1); });
+  if(pb) pb.addEventListener("click",function(){ show(cur-1, "prev"); });
+  if(nb) nb.addEventListener("click",function(){ show(cur+1, "next"); });
 
   if(deckEl){
     var tx=null;
@@ -809,7 +883,7 @@ document.addEventListener("DOMContentLoaded", function() {
     deckEl.addEventListener("touchend",function(e){
       if(tx===null) return;
       var d=tx-e.changedTouches[0].clientX;
-      if(d>40) show(cur+1); else if(d<-40) show(cur-1);
+      if(d>35) show(cur+1, "next"); else if(d<-35) show(cur-1, "prev");
       tx=null;
     },{passive:true});
   }
