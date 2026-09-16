@@ -1,0 +1,6 @@
+# Root duplicates (active files are located in assets/)
+/envelope-intro.mp4
+/music.mp3
+
+# Reference extraction files
+ref_*

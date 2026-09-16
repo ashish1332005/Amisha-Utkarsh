@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <title>Amisha &amp; Utkarsh — Wedding Invitation | 20th &amp; 21st November 2026</title>
+  <meta name="description" content="Bahedia &amp; Gupta families request the pleasure of your gracious presence for the wedding ceremony of Amisha &amp; Utkarsh. 20th &amp; 21st November 2026 at The Imperial Prime, Bhilwara."/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Cormorant+SC:wght@400;500;600;700&family=Great+Vibes&display=swap"/>
+  <link rel="stylesheet" href="./styles.css"/>
+
+  <style>
+    :root {
+      --gold: #c99d4e;
+      --gold-soft: #dcc188;
+      --gold-dark: #9a7329;
+      --primary: #172846;
+      --font-d: "Cormorant Garamond", Georgia, serif;
+      --font-s: "Great Vibes", cursive;
+      --font-c: "Cormorant SC", serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    html { scroll-behavior: smooth; }
+    body { background: #f6f3ed; color: #172846; font-family: var(--font-d); margin: 0; padding: 0; overflow-x: hidden; }
+
+    /* SCREEN = full-viewport section */
+    .screen {
+      position: relative;
+      width: 100%;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-sizing: border-box;
+      padding: clamp(14px, 2.5dvh, 24px) 14px;
+    }
+    .screen > .bg {
+      position: absolute; inset: 0; z-index: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; pointer-events: none;
+    }
+
+    /* FONT UTILITIES */
+    .fs { font-family: var(--font-s); }
+    .fd { font-family: var(--font-d); }
+    .fc { font-family: var(--font-c); letter-spacing: .22em; text-transform: uppercase; }
+
+    /* REVEAL ANIMATIONS */
+    .ri { transition: opacity .9s cubic-bezier(0,0,.2,1), transform .9s cubic-bezier(0,0,.2,1); will-change: transform,opacity; }
+    .ri-up   { opacity: 0; transform: translateY(28px); }
+    .ri-dn   { opacity: 0; transform: translateY(-28px); }
+    .ri-zoom { opacity: 0; transform: scale(.94); }
+    .ri.in   { opacity: 1 !important; transform: none !important; }
+
+    /* GOLD DIVIDER */
+    .gd { display:flex; align-items:center; gap:6px; }
+    .gd .l { flex:1; height:.5px; background: linear-gradient(to right, transparent, var(--gold), transparent); }
+    .gd .g { color:var(--gold); font-size:9px; }
+
+    /* MUSIC BTN */
+    .mbtn {
+      position:fixed; bottom:18px; right:18px; z-index:90;
+      width:42px; height:42px; border-radius:50%;
+      background: rgba(23,40,70,.88); backdrop-filter:blur(8px);
+      border:1px solid var(--gold); color:var(--gold);
+      display:flex; align-items:center; justify-content:center;
+      cursor:pointer; box-shadow:0 4px 18px rgba(0,0,0,.25);
+      transition: all .3s;
+    }
+    .mbtn:hover { transform: scale(1.06); }
+    .sbar { display:flex; align-items:flex-end; gap:2.5px; height:16px; }
+    .sbar span { width:2px; background:var(--gold); border-radius:2px; animation: sw 1.2s ease-in-out infinite alternate; }
+    .sbar span:nth-child(1){height:5px;animation-delay:.1s}
+    .sbar span:nth-child(2){height:14px;animation-delay:.3s}
+    .sbar span:nth-child(3){height:9px;animation-delay:.2s}
+    .sbar span:nth-child(4){height:15px;animation-delay:.4s}
+    .mbtn.muted .sbar span { animation:none !important; height:2.5px !important; }
+    @keyframes sw { 0%{height:3px} 100%{height:16px} }
+
+    /* POLAROID */
+    .polaroid {
+      background:#fff; padding:10px 10px 18px;
+      box-shadow: 0 16px 36px -8px rgba(23,40,70,.2), 0 2px 10px rgba(0,0,0,.06);
+      border-radius:2px; position:relative; transition:transform .5s;
+    }
+    .polaroid-tape {
+      position:absolute; top:-12px; left:50%; transform:translateX(-50%);
+      width:64px; height:22px; background:rgba(224,206,172,.7);
+      box-shadow:0 1px 3px rgba(0,0,0,.1);
+      border-left:2px dashed rgba(255,255,255,.4);
+      border-right:2px dashed rgba(255,255,255,.4); z-index:10;
+    }
+
+    /* DECKLED */
+    .deckled {
+      background:#fdfbf7;
+      background-image:radial-gradient(#eadeca .75px,transparent .75px);
+      background-size:14px 14px;
+      border:1px solid rgba(201,157,78,.45);
+      box-shadow:0 14px 34px -8px rgba(23,40,70,.15);
+    }
+    .deckled-in { border:1px solid rgba(201,157,78,.35); }
+
+    /* STAMP */
+    .stamp {
+      position:absolute; top:14%; right:5%;
+      width:70px; height:70px;
+      border:1.5px dashed rgba(23,40,70,.35); border-radius:50%;
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      color:rgba(23,40,70,.45); transform:rotate(12deg);
+      pointer-events:none; z-index:5; font-size:6px;
+    }
+
+    /* SCRATCH CANVAS */
+    #sc { touch-action:none; cursor:grab; }
+    #sc:active { cursor:grabbing; }
+
+    /* COUNTDOWN BOX */
+    #cdbox {
+      max-height:0; opacity:0; overflow:hidden;
+      transition: max-height .7s ease, opacity .7s ease, margin-top .7s ease;
+      margin-top:0; width:100%; max-width:300px; align-self:center; padding:0 16px;
+    }
+    #cdbox.open { max-height:130px; opacity:1; margin-top:10px; }
+
+    /* FAMILY COL — no overflow */
+    .fcol { min-width:0; overflow-wrap:break-word; word-break:break-word; }
+
+    /* SCHEDULE ROW */
+    .srow {
+      display:flex; justify-content:space-between; align-items:center;
+      padding:5px 0; border-bottom:1px solid rgba(210,200,185,.5);
+      gap:4px;
+    }
+    .srow:last-child { border-bottom:none; }
+    .srow .name { font-family:var(--font-d); font-size:clamp(11px,3vw,14px); font-weight:600; color:#172846; flex:1; }
+    .srow .time { font-family:var(--font-c); font-size:clamp(7.5px,2vw,10px); font-weight:700; white-space:nowrap; }
+
+    @keyframes pulse  { 0%,100%{opacity:1} 50%{opacity:.5} }
+    @keyframes bounce { 0%{transform:translateY(0)} 100%{transform:translateY(-5px)} }
+  </style>
+</head>
+<body>
+
+<!-- ══ ENVELOPE OVERLAY ══════════════════════════════════════ -->
+<div id="eo" style="position:fixed;inset:0;z-index:100;background:#000;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:opacity 1s;">
+  <video id="ev" src="./assets/envelope-intro.mp4#t=0.1" style="width:100%;height:100%;object-fit:cover;" playsinline preload="auto" muted></video>
+  <div style="position:absolute;bottom:56px;left:0;right:0;display:flex;justify-content:center;pointer-events:none;">
+    <div style="padding:10px 22px;border-radius:100px;background:rgba(255,255,255,.15);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.4);color:#fff;font-family:var(--font-c);font-size:11px;letter-spacing:.28em;animation:pulse 2s infinite;display:flex;align-items:center;gap:8px;">
+      <svg style="width:14px;height:14px;color:#fcd34d;animation:bounce .8s ease-in-out infinite alternate;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 19v-8.93a2 2 0 01.89-1.664l7-4.666a2 2 0 012.22 0l7 4.666A2 2 0 0121 10.07V19M3 19a2 2 0 002 2h14a2 2 0 002-2M3 19l6.75-4.5M21 19l-6.75-4.5M3 10l6.75 4.5M21 10l-6.75 4.5m0 0l-1.14.76a2 2 0 01-2.22 0L10.25 14.5"/></svg>
+      TAP TO OPEN INVITATION
+    </div>
+  </div>
+</div>
+
+<audio id="bgm" src="./assets/music.mp3" preload="auto" loop></audio>
+<button id="mb" class="mbtn muted" aria-label="Toggle music"><div class="sbar"><span></span><span></span><span></span><span></span></div></button>
+
+<!-- ══ BIRDS ══ -->
+<div style="position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:10;" aria-hidden="true">
+  <div class="animate-fly-lr" style="--fly-duration:9s;--fly-delay:0s;--bird-scale:.8;--fly-y-start:0px;--fly-y-end:-50px;top:12%;left:-64px;position:absolute">
+    <svg viewBox="0 0 64 64" fill="currentColor" style="width:36px;height:36px;color:rgba(201,157,78,.45);">
+      <path d="M30 28C23 15,16 5,9 1C15 7,23 19,30 28Z" opacity=".7"/><path d="M6 32C14 32,28 33,38 31C46 29.5,54 26,58 27C52 30,44 36,38 36C26 36,14 34,6 32Z"/><path d="M32 30C24 16,16 6,8 2C15 8,24 20,32 30Z"/>
+    </svg>
+  </div>
+  <div class="animate-fly-rl" style="--fly-duration:11s;--fly-delay:3s;--bird-scale:.7;--fly-y-start:20px;--fly-y-end:-30px;top:30%;right:-64px;position:absolute">
+    <svg viewBox="0 0 64 64" fill="currentColor" style="width:36px;height:36px;color:rgba(201,157,78,.45);">
+      <path d="M30 28C23 15,16 5,9 1C15 7,23 19,30 28Z" opacity=".7"/><path d="M6 32C14 32,28 33,38 31C46 29.5,54 26,58 27C52 30,44 36,38 36C26 36,14 34,6 32Z"/><path d="M32 30C24 16,16 6,8 2C15 8,24 20,32 30Z"/>
+    </svg>
+  </div>
+</div>
+
+<!-- ══ PETALS ══ -->
+<div style="position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:10;" aria-hidden="true">
+  <div class="animate-petal" style="--petal-duration:14s;--petal-delay:-2s;--petal-scale:.6;--petal-opacity:.5;--petal-drift:50px;left:7%;top:-40px;position:absolute"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;color:#df8791"><path d="M12,2C18,4 20,10 16,16C12,21 7,20 6,14C5,8 8,4 12,2Z"/></svg></div>
+  <div class="animate-petal" style="--petal-duration:18s;--petal-delay:-7s;--petal-scale:.5;--petal-opacity:.4;--petal-drift:80px;left:28%;top:-40px;position:absolute"><svg viewBox="0 0 24 24" fill="currentColor" style="width:14px;height:14px;color:var(--gold)"><path d="M12,2C17,6 19,13 12,22C5,13 7,6 12,2Z"/></svg></div>
+  <div class="animate-petal" style="--petal-duration:16s;--petal-delay:-4s;--petal-scale:.7;--petal-opacity:.5;--petal-drift:40px;left:52%;top:-40px;position:absolute"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;color:#df8791"><path d="M12,2C18,4 20,10 16,16C12,21 7,20 6,14C5,8 8,4 12,2Z"/></svg></div>
+  <div class="animate-petal" style="--petal-duration:20s;--petal-delay:-11s;--petal-scale:.5;--petal-opacity:.4;--petal-drift:100px;left:75%;top:-40px;position:absolute"><svg viewBox="0 0 24 24" fill="currentColor" style="width:14px;height:14px;color:var(--gold)"><path d="M12,2C17,6 19,13 12,22C5,13 7,6 12,2Z"/></svg></div>
+  <div class="animate-petal" style="--petal-duration:13s;--petal-delay:-5s;--petal-scale:.65;--petal-opacity:.5;--petal-drift:60px;left:90%;top:-40px;position:absolute"><svg viewBox="0 0 24 24" fill="currentColor" style="width:15px;height:15px;color:#df8791"><path d="M12,2C18,4 20,10 16,16C12,21 7,20 6,14C5,8 8,4 12,2Z"/></svg></div>
+</div>
+
+<main style="width:100%;position:relative;">
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SCREEN 1 · HERO                                           -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="screen" style="justify-content:center;padding:clamp(14px,2.5dvh,22px) 16px;overflow:hidden;">
+  <img class="bg" src="./assets/hero-bg-BoJZa16A.webp" alt=""/>
+
+  <div style="width:100%;max-width:350px;margin:auto;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:2;position:relative;gap:clamp(6px,1.2dvh,12px);box-sizing:border-box;">
+
+    <!-- Monogram -->
+    <div class="ri ri-dn" data-delay="100" style="display:flex;justify-content:center;width:100%;">
+      <img src="./assets/au-monogram.png" alt="A U Monogram" class="animate-float"
+        style="width:clamp(78px,20vw,100px);height:clamp(78px,20vw,100px);object-fit:contain;filter:drop-shadow(0 4px 14px rgba(201,157,78,.35));"/>
+    </div>
+
+    <!-- Names & Date Block -->
+    <div style="width:100%;display:flex;flex-direction:column;align-items:center;">
+      <!-- Names -->
+      <div class="ri ri-up" data-delay="220" style="text-align:center;width:100%;">
+        <h1 style="margin:0;line-height:1.2;text-align:center;font-weight:400;text-shadow:0 1px 12px rgba(255,255,255,.9), 0 2px 20px rgba(253,251,247,.8);">
+          <span class="fs" style="font-size:clamp(34px,9.5vw,52px);color:#172846;font-weight:500;">Amisha</span>
+          <span class="fs" style="font-size:clamp(19px,5.4vw,30px);color:var(--gold);font-style:italic;font-weight:300;margin:0 4px;">with</span>
+          <span class="fs" style="font-size:clamp(34px,9.5vw,52px);color:#172846;font-weight:500;">Utkarsh</span>
+        </h1>
+      </div>
+
+      <!-- Date with Heart Dividers -->
+      <div class="ri ri-up" data-delay="320" style="text-align:center;width:100%;margin-top:clamp(4px,0.8dvh,7px);">
+        <div class="gd" style="max-width:130px;margin:0 auto 3px;"><span class="l"></span><span class="g" style="font-size:7px;">♥</span><span class="l"></span></div>
+        <p class="fd" style="font-size:clamp(15px,4.3vw,22px);color:#172846;font-weight:700;margin:0;letter-spacing:.03em;line-height:1.25;text-shadow:0 1px 8px rgba(255,255,255,.9);">
+          20<sup style="font-size:0.65em;font-weight:600;">th</sup> &amp; 21<sup style="font-size:0.65em;font-weight:600;">st</sup> November ‘2026
+        </p>
+        <div class="gd" style="max-width:130px;margin:3px auto 0;"><span class="l"></span><span class="g" style="font-size:7px;">♥</span><span class="l"></span></div>
+      </div>
+    </div>
+
+    <!-- Scratch card container -->
+    <div class="ri ri-zoom" data-delay="420" style="width:100%;max-width:295px;align-self:center;">
+      <div id="sc-wrap" style="position:relative;width:100%;aspect-ratio:5/2.25;border-radius:14px;overflow:hidden;border:1.5px solid rgba(201,157,78,.65);box-shadow:0 8px 24px rgba(23,40,70,.2);touch-action:none;background:#172846;">
+        <!-- revealed layer -->
+        <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(253,251,247,.95);backdrop-filter:blur(10px);text-align:center;padding:6px 12px;gap:2px;">
+          <p class="fc" style="font-size:8px;letter-spacing:.24em;color:var(--gold-dark);font-weight:700;margin:0;">✦ VENUE &amp; CELEBRATION ✦</p>
+          <p class="fs" style="font-size:clamp(18px,5vw,23px);color:#172846;margin:0;line-height:1.15;font-weight:600;">The Imperial prime , Bhilwara</p>
+          <p class="fd" style="font-size:clamp(11px,2.9vw,13px);color:#475569;font-style:italic;margin:0;font-weight:500;">20th &amp; 21st November ‘2026</p>
+        </div>
+        <!-- scratch canvas -->
+        <canvas id="sc" style="position:absolute;inset:0;width:100% !important;height:100% !important;display:block;transition:opacity .5s;opacity:1;"></canvas>
+      </div>
+    </div>
+
+    <!-- Countdown (revealed after scratch) -->
+    <div id="cdbox">
+      <div style="display:flex;align-items:center;justify-content:center;gap:4px;color:var(--gold);font-family:var(--font-c);font-size:7.5px;letter-spacing:.2em;margin:4px 0 3px;">
+        <span>⤙</span><span>COUNTDOWN</span><span>⤚</span>
+      </div>
+      <div style="display:flex;align-items:center;border:1px solid rgba(201,157,78,.35);background:rgba(255,255,255,.6);backdrop-filter:blur(8px);border-radius:10px;padding:6px 4px;">
+        <div style="flex:1;text-align:center;"><span id="tD" style="font-family:var(--font-d);font-size:clamp(16px,4.2vw,22px);font-weight:700;color:#172846;display:block;line-height:1;">--</span><span class="fc" style="font-size:6px;color:var(--gold);font-weight:700;">DAYS</span></div>
+        <span style="width:.5px;height:24px;background:rgba(201,157,78,.3);display:block;"></span>
+        <div style="flex:1;text-align:center;"><span id="tH" style="font-family:var(--font-d);font-size:clamp(16px,4.2vw,22px);font-weight:700;color:#172846;display:block;line-height:1;">--</span><span class="fc" style="font-size:6px;color:var(--gold);font-weight:700;">HRS</span></div>
+        <span style="width:.5px;height:24px;background:rgba(201,157,78,.3);display:block;"></span>
+        <div style="flex:1;text-align:center;"><span id="tM" style="font-family:var(--font-d);font-size:clamp(16px,4.2vw,22px);font-weight:700;color:#172846;display:block;line-height:1;">--</span><span class="fc" style="font-size:6px;color:var(--gold);font-weight:700;">MINS</span></div>
+        <span style="width:.5px;height:24px;background:rgba(201,157,78,.3);display:block;"></span>
+        <div style="flex:1;text-align:center;"><span id="tS" style="font-family:var(--font-d);font-size:clamp(16px,4.2vw,22px);font-weight:700;color:#172846;display:block;line-height:1;">--</span><span class="fc" style="font-size:6px;color:var(--gold);font-weight:700;">SECS</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SCREEN 2 · THE FAMILIES                                   -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="screen">
+  <img class="bg" src="./assets/families-bg-user.png" alt=""/>
+
+  <div style="width:100%;max-width:330px;margin:auto;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:2;position:relative;gap:clamp(4px,0.8dvh,7px);box-sizing:border-box;">
+
+    <!-- TOP: GANESH JI & HEADERS -->
+    <div class="ri ri-dn" data-delay="80" style="text-align:center;display:flex;flex-direction:column;align-items:center;width:100%;">
+      <!-- Ganesh Ji -->
+      <div style="position:relative;width:clamp(58px,15vw,76px);height:clamp(58px,15vw,76px);display:flex;align-items:center;justify-content:center;margin-bottom:2px;">
+        <img src="./assets/ganesh.png" alt="Shree Ganesh" style="width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 4px 10px rgba(201,157,78,.4));"/>
+      </div>
+      <p class="fc" style="font-size:clamp(8px,2.1vw,10px);letter-spacing:.24em;color:#172846;font-weight:700;margin:1px 0 2px;">SHREE GANESHAY NAMAH</p>
+      <div class="gd" style="max-width:55px;margin:0 auto 2px;"><span class="l"></span><span class="g" style="font-size:6px;">✦</span><span class="l"></span></div>
+      <p class="fc" style="font-size:clamp(7.5px,2vw,9.5px);letter-spacing:.2em;color:#172846;font-weight:700;margin:0 0 2px;">TWO FAMILIES. ONE PROMISE.</p>
+      <div class="gd" style="max-width:75px;margin:1px auto 2px;"><span class="l"></span><span class="g" style="font-size:6px;">✦</span><span class="l"></span></div>
+      <h2 class="fd" style="font-size:clamp(16px,4.4vw,22px);letter-spacing:.13em;color:#172846;text-transform:uppercase;font-weight:700;margin:1px 0 0;line-height:1.1;">INTRODUCING</h2>
+      <span class="fs" style="font-size:clamp(22px,6vw,30px);color:var(--gold-dark);display:block;line-height:1.15;margin-bottom:1px;font-weight:500;">the families</span>
+    </div>
+
+    <!-- CENTER: INVITATION CARTOUCHE & NAMES (MATCHING IMAGE 1) -->
+    <div class="ri ri-zoom" data-delay="180" style="width:100%;max-width:315px;position:relative;display:flex;flex-direction:column;align-items:center;">
+
+      <!-- Delicate Vintage Cartouche Box for Blessings -->
+      <div style="position:relative;background:rgba(253,251,247,.88);backdrop-filter:blur(6px);border:1px solid rgba(201,157,78,.75);border-radius:12px;padding:clamp(6px,1.3dvh,9px) clamp(10px,2.4vw,14px);box-shadow:0 3px 14px -4px rgba(23,40,70,.12);text-align:center;width:100%;">
+        <!-- Vintage ornamental corner brackets -->
+        <span style="position:absolute;top:-4px;left:-4px;color:var(--gold);font-size:9px;line-height:1;">❧</span>
+        <span style="position:absolute;top:-4px;right:-4px;color:var(--gold);font-size:9px;line-height:1;transform:scaleX(-1);">❧</span>
+        <span style="position:absolute;bottom:-4px;left:-4px;color:var(--gold);font-size:9px;line-height:1;transform:scaleY(-1);">❧</span>
+        <span style="position:absolute;bottom:-4px;right:-4px;color:var(--gold);font-size:9px;line-height:1;transform:scale(-1);">❧</span>
+
+        <p class="fd" style="font-size:clamp(9.5px,2.5vw,11.5px);color:#12213a;font-style:italic;margin:0;line-height:1.45;letter-spacing:.01em;font-weight:500;">
+          With divine blessings, Bahedia &amp; Gupta families<br/>
+          request the pleasure of your gracious presence<br/>
+          for the wedding ceremony of
+        </p>
+      </div>
+
+      <div class="gd" style="max-width:45px;margin:clamp(4px,0.8dvh,7px) auto clamp(2px,0.6dvh,5px);"><span class="l"></span><span class="g" style="font-size:6px;">✦</span><span class="l"></span></div>
+
+      <!-- 2-Column Names & Lineage with Monogram in Middle (Constrained to Center) -->
+      <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:0 4px;align-items:center;width:100%;background:radial-gradient(ellipse at center,rgba(254,252,248,.82) 0%,rgba(254,252,248,0.3) 85%);border-radius:12px;padding:4px 2px;">
+
+        <!-- BRIDE COLUMN -->
+        <div class="fcol" style="text-align:center;padding:0 2px;">
+          <h3 class="fs" style="font-size:clamp(22px,6vw,29px);color:#172846;margin:0 0 1px;line-height:1.1;font-weight:600;text-shadow:0 1px 6px rgba(255,255,255,.9);">Amisha</h3>
+          <div class="gd" style="max-width:34px;margin:1px auto 2px;"><span class="l"></span><span class="g" style="font-size:5px;">✦</span><span class="l"></span></div>
+          <p class="fc" style="font-size:clamp(7px,1.8vw,8.5px);color:var(--gold-dark);font-weight:700;margin:0 0 1px;">D / O</p>
+          <p class="fd" style="font-size:clamp(8.5px,2.3vw,10.2px);color:#172846;font-weight:700;line-height:1.35;margin:0 0 3px;text-transform:uppercase;">
+            SHRI ANIL KUMAR<br/>BAHEDIA<br/>
+            <span style="color:var(--gold);font-style:italic;font-weight:400;">&amp;</span><br/>
+            SMT. HANSA BAHEDIA
+          </p>
+          <p class="fc" style="font-size:clamp(6.8px,1.7vw,8px);color:#64748b;font-weight:700;margin:0 0 1px;">G D / O</p>
+          <p class="fd" style="font-size:clamp(8px,2.1vw,9.5px);color:#334155;font-weight:600;line-height:1.3;margin:0;text-transform:uppercase;">
+            LT. MOTILAL JI<br/>BAHEDIA<br/>
+            <span style="color:var(--gold);font-style:italic;font-weight:400;">&amp;</span><br/>
+            CHAAND BAI BAHEDIA
+          </p>
+        </div>
+
+        <!-- CENTER DIVIDER WITH AU MONOGRAM -->
+        <div style="display:flex;flex-direction:column;align-items:center;align-self:stretch;justify-content:center;padding:0 2px;">
+          <div style="width:1px;flex:1;background:linear-gradient(to bottom,transparent,var(--gold) 25%,var(--gold) 75%,transparent);"></div>
+          <img src="./assets/au-monogram.png" alt="AU" class="animate-float"
+            style="width:clamp(36px,9.5vw,44px);height:clamp(36px,9.5vw,44px);object-fit:contain;margin:2px 0;filter:drop-shadow(0 2px 6px rgba(201,157,78,.35));"/>
+          <div style="width:1px;flex:1;background:linear-gradient(to top,transparent,var(--gold) 25%,var(--gold) 75%,transparent);"></div>
+        </div>
+
+        <!-- GROOM COLUMN -->
+        <div class="fcol" style="text-align:center;padding:0 2px;">
+          <h3 class="fs" style="font-size:clamp(22px,6vw,29px);color:#172846;margin:0 0 1px;line-height:1.1;font-weight:600;text-shadow:0 1px 6px rgba(255,255,255,.9);">Utkarsh</h3>
+          <div class="gd" style="max-width:34px;margin:1px auto 2px;"><span class="l"></span><span class="g" style="font-size:5px;">✦</span><span class="l"></span></div>
+          <p class="fc" style="font-size:clamp(7px,1.8vw,8.5px);color:var(--gold-dark);font-weight:700;margin:0 0 1px;">S / O</p>
+          <p class="fd" style="font-size:clamp(8.5px,2.3vw,10.2px);color:#172846;font-weight:700;line-height:1.35;margin:0 0 3px;text-transform:uppercase;">
+            SHRI PRAMOD KUMAR<br/>GUPTA<br/>
+            <span style="color:var(--gold);font-style:italic;font-weight:400;">&amp;</span><br/>
+            SMT. NEERU GUPTA
+          </p>
+          <p class="fc" style="font-size:clamp(6.8px,1.7vw,8px);color:#64748b;font-weight:700;margin:0 0 1px;">G S / O</p>
+          <p class="fd" style="font-size:clamp(8px,2.1vw,9.5px);color:#334155;font-weight:600;line-height:1.3;margin:0;text-transform:uppercase;">
+            LT. RAM KUMAR<br/>GUPTA<br/>
+            <span style="color:var(--gold);font-style:italic;font-weight:400;">&amp;</span><br/>
+            LT. SIDDHESHWARI GUPTA
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- BOTTOM: RAISED WITH LOVE & TOGETHER FOREVER -->
+    <div class="ri ri-up" data-delay="280" style="text-align:center;width:100%;margin-top:clamp(2px,0.5dvh,4px);">
+      <p class="fc" style="font-size:clamp(7.5px,2vw,9.5px);letter-spacing:.22em;color:#172846;font-weight:700;line-height:1.3;margin:0;">
+        RAISED WITH LOVE,<br/>UNITED BY DESTINY,
+      </p>
+      <div style="color:var(--gold);font-size:6px;margin:1px 0;">♥</div>
+      <span class="fs" style="font-size:clamp(20px,5.5vw,27px);color:var(--gold-dark);display:block;line-height:1.2;margin:0 0 1px;font-weight:500;">together forever</span>
+      <div class="gd" style="max-width:55px;margin:0 auto;"><span class="l"></span><span class="g" style="font-size:5px;">✦</span><span class="l"></span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SCREEN 3 · OUR STORY                                      -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="screen">
+  <img class="bg" src="./assets/Storyboard-9-BPOwQluv.webp" alt="" style="object-fit:cover;"/>
+
+  <!-- Stamp -->
+  <div class="stamp">
+    <span class="fc" style="font-size:5.5px;letter-spacing:.18em;">FOREVER</span>
+    <span class="fs" style="font-size:14px;line-height:1.3;">A &amp; U</span>
+    <span style="font-size:7px;">♥</span>
+  </div>
+
+  <div style="width:100%;max-width:330px;margin:auto;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:2;position:relative;gap:clamp(6px,1.4dvh,12px);box-sizing:border-box;">
+    <!-- Header -->
+    <div class="ri ri-dn" data-delay="100" style="text-align:center;width:100%;">
+      <h2 class="fd" style="font-size:clamp(21px,5.4vw,28px);letter-spacing:.16em;color:#172846;text-transform:uppercase;font-weight:700;margin:0 0 3px;text-shadow:0 1px 8px rgba(255,255,255,.9);">OUR STORY</h2>
+      <div class="gd" style="max-width:110px;margin:0 auto 3px;"><span class="l"></span><span class="g">❦</span><span class="g">❦</span><span class="l"></span></div>
+      <p class="fd" style="font-style:italic;font-size:clamp(11.5px,3vw,14px);color:#334155;margin:0;font-weight:500;text-shadow:0 1px 6px rgba(255,255,255,.8);">Some chapters are written by destiny.</p>
+    </div>
+
+    <!-- Carousel -->
+    <div class="ri ri-zoom" data-delay="250" style="display:flex;align-items:center;justify-content:center;width:100%;">
+      <div style="display:flex;align-items:center;gap:clamp(6px,2vw,10px);max-width:310px;width:100%;">
+        <button id="pb" aria-label="Previous" style="flex-shrink:0;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.92);backdrop-filter:blur(6px);border:1px solid rgba(201,157,78,.6);display:grid;place-items:center;cursor:pointer;box-shadow:0 3px 10px rgba(0,0,0,.08);transition:all .2s;">
+          <svg style="width:16px;height:16px;color:#172846;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg>
+        </button>
+
+        <div id="deck" style="flex:1;min-width:0;">
+          <div id="frame" class="polaroid" style="transform:rotate(-1.5deg);">
+            <div class="polaroid-tape"></div>
+            <div style="position:relative;width:100%;aspect-ratio:3/3.8;overflow:hidden;background:#f0ece6;margin-top:4px;border-radius:2px;">
+              <img src="./assets/story-1.jpg" alt="Story" class="si" data-c="From that first smile to a lifetime of love ♡" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .5s;opacity:1;"/>
+              <img src="./assets/story-2.jpg" alt="Story" class="si" data-c="Every step leading us closer together ♡" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .5s;opacity:0;"/>
+              <img src="./assets/story-3.jpg" alt="Story" class="si" data-c="Hand in hand through every season ♡" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .5s;opacity:0;"/>
+              <img src="./assets/story-4.jpg" alt="Story" class="si" data-c="Our greatest adventure begins now ♡" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .5s;opacity:0;"/>
+            </div>
+            <p id="cap" class="fs" style="font-size:clamp(13px,3.8vw,16.5px);color:#172846;text-align:center;margin:7px 0 0;line-height:1.25;transition:opacity .3s;font-weight:600;">From that first smile to a lifetime of love ♡</p>
+          </div>
+          <div id="dots" style="display:flex;justify-content:center;gap:6px;margin-top:8px;">
+            <span style="width:7px;height:7px;border-radius:50%;background:#172846;transition:all .3s;"></span>
+            <span style="width:7px;height:7px;border-radius:50%;background:var(--gold-soft);transition:all .3s;"></span>
+            <span style="width:7px;height:7px;border-radius:50%;background:var(--gold-soft);transition:all .3s;"></span>
+            <span style="width:7px;height:7px;border-radius:50%;background:var(--gold-soft);transition:all .3s;"></span>
+          </div>
+        </div>
+
+        <button id="nb" aria-label="Next" style="flex-shrink:0;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.92);backdrop-filter:blur(6px);border:1px solid rgba(201,157,78,.6);display:grid;place-items:center;cursor:pointer;box-shadow:0 3px 10px rgba(0,0,0,.08);transition:all .2s;">
+          <svg style="width:16px;height:16px;color:#172846;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Bottom quote -->
+    <div class="ri ri-up" data-delay="340" style="text-align:center;width:100%;">
+      <p class="fs" style="font-size:clamp(13.5px,4vw,17px);color:var(--gold-dark);font-style:italic;margin:0;line-height:1.25;text-shadow:0 1px 8px rgba(255,255,255,.8);font-weight:500;">"From that first conversation to a lifetime of adventures"</p>
+      <div style="color:var(--gold);font-size:8px;margin-top:3px;">♥</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SCREEN 4 · SCHEDULE OF EVENTS (DAY 1 & DAY 2)             -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section id="schedule" style="position:relative;width:100%;display:flex;flex-direction:column;align-items:center;padding:0;overflow:hidden;">
+  <!-- ONE SINGLE BACKGROUND IMAGE THAT SCROLLS WITH THE CONTENT -->
+  <img class="bg" src="./assets/schedule-bg-user.png" alt="Schedule Background" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;z-index:0;"/>
+
+  <!-- ══ CARD 1 (DAY 1) - PERFECTLY CENTERED IN FIRST 100dvh VIEWPORT ══ -->
+  <div style="width:100%;min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;box-sizing:border-box;padding:clamp(14px,2.5dvh,22px) 14px;position:relative;z-index:2;">
+    <div style="width:100%;max-width:350px;margin:auto;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+      
+      <!-- TOP: HEADER -->
+      <div class="ri ri-dn" data-delay="100" style="text-align:center;width:100%;margin-bottom:clamp(6px,1.5dvh,12px);">
+        <div style="color:var(--gold);font-size:12px;margin-bottom:2px;">❦</div>
+        <h2 class="fd" style="font-size:clamp(20px,5vw,27px);letter-spacing:.14em;color:#172846;text-transform:uppercase;font-weight:700;margin:0 0 2px;text-shadow:0 1px 8px rgba(255,255,255,.9);">Schedule of Events</h2>
+        <div class="gd" style="max-width:110px;margin:0 auto 3px;"><span class="l"></span><span class="g">♥</span><span class="l"></span></div>
+        <p class="fc" style="font-size:clamp(8px,2.2vw,10px);color:#172846;font-weight:700;letter-spacing:.18em;margin:0;text-shadow:0 1px 6px rgba(255,255,255,.9);">A CELEBRATION OF TRADITION, LOVE &amp; FAMILY</p>
+      </div>
+
+      <!-- DAY 1 CARD -->
+      <div class="ri ri-zoom" data-delay="200" style="width:100%;max-width:345px;">
+        <div class="deckled" style="border-radius:14px;padding:clamp(10px,2dvh,14px) clamp(10px,2dvh,14px) clamp(8px,1.6dvh,11px);background:rgba(253,251,247,.94);backdrop-filter:blur(8px);box-shadow:0 12px 32px -6px rgba(23,40,70,.18);">
+          <div class="deckled-in" style="border-radius:8px;padding:9px 9px 8px;text-align:center;">
+            <div style="color:var(--gold);font-size:11px;margin-bottom:2px;opacity:.9;">✦ ❦ ✦</div>
+            <p class="fc" style="font-size:clamp(8.5px,2.4vw,11px);letter-spacing:.22em;color:var(--gold-dark);font-weight:700;margin:0;">FRIDAY, 20TH NOVEMBER 2026</p>
+            <div style="height:.5px;width:80px;background:rgba(201,157,78,.5);margin:4px auto 3px;"></div>
+            <div style="width:22px;height:22px;margin:0 auto 2px;color:var(--gold);">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C12 2 10 5 10 7C10 8.1 10.9 9 12 9C13.1 9 14 8.1 14 7C14 5 12 2 12 2ZM6 14C6 11.8 8.7 10 12 10C15.3 10 18 11.8 18 14C18 16.2 15.3 18 12 18C8.7 18 6 16.2 6 14ZM4 20H20V22H4V20Z" opacity=".9"/></svg>
+            </div>
+            <h3 class="fs" style="font-size:clamp(19px,5.2vw,25px);color:#172846;margin:0 0 5px;line-height:1.15;font-weight:600;">Pre-Wedding Rituals</h3>
+            <div style="text-align:left;border-top:1px solid rgba(201,157,78,.3);padding-top:4px;">
+              <div class="srow"><span class="name">Vinayak Sthapna</span><span class="time" style="color:var(--gold-dark);">8:15 AM Onwards</span></div>
+              <div class="srow"><span class="name">Breakfast</span><span class="time" style="color:#475569;">8:30 AM</span></div>
+              <div class="srow"><span class="name">Mangal Kalash</span><span class="time" style="color:var(--gold-dark);">9:15 AM Onwards</span></div>
+              <div class="srow"><span class="name">Tilak Ceremony</span><span class="time" style="color:var(--gold-dark);">11:00 AM Onwards</span></div>
+              <div class="srow"><span class="name">Lunch</span><span class="time" style="color:#475569;">12:30 PM</span></div>
+              <div class="srow"><span class="name" style="color:#92400e;font-weight:700;">&#127804; Haldi Carnival</span><span class="time" style="color:#92400e;font-weight:700;">3:00 PM</span></div>
+              <div class="srow" style="border-bottom:none;"><span class="name" style="color:#3730a3;font-weight:700;">&#10024; DJ Night &amp; Dinner</span><span class="time" style="color:#3730a3;font-weight:700;">6:30 PM</span></div>
+            </div>
+            <div style="margin-top:5px;padding-top:4px;border-top:1px solid rgba(201,157,78,.3);">
+              <p class="fc" style="font-size:7.5px;letter-spacing:.18em;color:#64748b;margin:0 0 1px;font-weight:600;">VENUE</p>
+              <p class="fd" style="font-size:clamp(11px,3vw,13px);font-weight:700;color:#172846;margin:0;">The Imperial Prime, Bhilwara</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUBTLE CONTINUOUS SCROLL INDICATOR -->
+      <div class="ri ri-up" data-delay="300" style="text-align:center;width:100%;margin-top:clamp(10px,2.2dvh,18px);display:flex;flex-direction:column;align-items:center;gap:3px;">
+        <p class="fc" style="font-size:clamp(7.5px,2vw,9px);letter-spacing:.22em;color:#172846;font-weight:700;margin:0;text-shadow:0 1px 6px rgba(255,255,255,.9);">SCROLL FOR DAY 2</p>
+        <svg style="width:14px;height:14px;color:var(--gold);animation:bounce .9s ease-in-out infinite alternate;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══ CARD 2 (DAY 2) - PERFECTLY CENTERED IN SECOND 100dvh VIEWPORT ══ -->
+  <div style="width:100%;min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;box-sizing:border-box;padding:clamp(14px,2.5dvh,22px) 14px;position:relative;z-index:2;">
+    <div style="width:100%;max-width:350px;margin:auto;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+
+      <!-- HEADER -->
+      <div class="ri ri-dn" data-delay="100" style="text-align:center;width:100%;margin-bottom:clamp(6px,1.5dvh,12px);">
+        <div style="color:var(--gold);font-size:12px;margin-bottom:2px;">❦</div>
+        <h2 class="fd" style="font-size:clamp(20px,5vw,27px);letter-spacing:.14em;color:#172846;text-transform:uppercase;font-weight:700;margin:0 0 2px;text-shadow:0 1px 8px rgba(255,255,255,.9);">Schedule of Events</h2>
+        <div class="gd" style="max-width:110px;margin:0 auto 3px;"><span class="l"></span><span class="g">♥</span><span class="l"></span></div>
+        <p class="fc" style="font-size:clamp(8px,2.2vw,10px);color:#172846;font-weight:700;letter-spacing:.18em;margin:0;text-shadow:0 1px 6px rgba(255,255,255,.9);">A CELEBRATION OF LOVE, FAITH &amp; FOREVER</p>
+      </div>
+
+      <!-- DAY 2 CARD -->
+      <div class="ri ri-zoom" data-delay="200" style="width:100%;max-width:345px;">
+        <div class="deckled" style="border-radius:14px;padding:clamp(10px,2dvh,14px) clamp(10px,2dvh,14px) clamp(8px,1.6dvh,11px);background:rgba(253,251,247,.94);backdrop-filter:blur(8px);box-shadow:0 12px 32px -6px rgba(23,40,70,.18);">
+          <div class="deckled-in" style="border-radius:8px;padding:9px 9px 8px;text-align:center;">
+            <div style="color:var(--gold);font-size:11px;margin-bottom:2px;opacity:.9;">❦</div>
+            <p class="fc" style="font-size:clamp(8.5px,2.4vw,11px);letter-spacing:.22em;color:var(--gold-dark);font-weight:700;margin:0;">SATURDAY, 21ST NOVEMBER 2026</p>
+            <div style="height:.5px;width:80px;background:rgba(201,157,78,.5);margin:4px auto 3px;"></div>
+            <div style="width:24px;height:24px;margin:0 auto 2px;color:#172846;opacity:.85;">
+              <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M32 6L32 14M26 14L38 14M32 14Q20 22 20 32L44 32Q44 22 32 14ZM20 32L44 32M12 40L52 40M16 40L16 56M48 40L48 56M24 40L24 56M40 40L40 56M32 40L32 56M8 56L56 56"/></svg>
+            </div>
+            <h3 class="fs" style="font-size:clamp(19px,5.2vw,25px);color:#172846;margin:0 0 5px;line-height:1.15;font-weight:600;">The Wedding &amp; Reception</h3>
+            <div style="text-align:left;border-top:1px solid rgba(201,157,78,.3);padding-top:4px;">
+              <div class="srow"><span class="name">Breakfast</span><span class="time" style="color:#475569;">8:30 AM</span></div>
+              <div class="srow"><span class="name">Mayra (Bhaat)</span><span class="time" style="color:var(--gold-dark);">9:15 AM</span></div>
+              <div class="srow"><span class="name">Lunch</span><span class="time" style="color:#475569;">12:30 PM Onwards</span></div>
+              <div class="srow"><span class="name">Var Nikasi</span><span class="time" style="color:var(--gold-dark);">1:15 PM</span></div>
+              <div class="srow"><span class="name">Barat Swagat &amp; Toran</span><span class="time" style="color:var(--gold-dark);">2:00 PM</span></div>
+              <div class="srow"><span class="name" style="color:#92400e;font-weight:700;">&#128144; Varmala &amp; Pheras</span><span class="time" style="color:#92400e;font-weight:700;">2:15 PM</span></div>
+              <div class="srow"><span class="name" style="color:#3730a3;font-weight:700;">&#128081; Reception &amp; Dinner</span><span class="time" style="color:#3730a3;font-weight:700;">6:30 PM</span></div>
+              <div class="srow" style="border-bottom:none;"><span class="name" style="color:#78350f;font-weight:700;">&#128293; Sacred Pheras</span><span class="time" style="color:#78350f;font-weight:700;">11:00 PM Onwards</span></div>
+            </div>
+            <div style="margin-top:5px;padding-top:4px;border-top:1px solid rgba(201,157,78,.3);">
+              <p class="fc" style="font-size:7.5px;letter-spacing:.18em;color:#64748b;margin:0 0 1px;font-weight:600;">VENUE</p>
+              <p class="fd" style="font-size:clamp(11px,3vw,13px);font-weight:700;color:#172846;margin:0;">The Imperial Prime, Bhilwara</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOTTOM: FLOURISH -->
+      <div class="ri ri-up" data-delay="300" style="text-align:center;width:100%;margin-top:clamp(10px,2.2dvh,18px);">
+        <div style="color:var(--gold);font-size:12px;opacity:.9;">❧ ♥ ☙</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SCREEN 5 · GREETINGS & BLESSINGS                           -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section id="greetings" class="screen">
+  <img class="bg" src="./assets/rsvp-bg-I-N3en4m.webp" alt="Background"/>
+
+  <div class="ri ri-zoom" data-delay="100" style="position:relative;width:100%;max-width:340px;margin:auto;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+    <!-- Royal Deckled Arch Card -->
+    <div style="position:relative;width:100%;background:rgba(253,251,247,.95);backdrop-filter:blur(10px);border:1.5px solid rgba(201,157,78,.65);border-radius:22px;padding:clamp(18px,3.8dvh,28px) clamp(16px,4vw,24px);box-shadow:0 14px 36px -8px rgba(23,40,70,.22);text-align:center;box-sizing:border-box;">
+      
+      <!-- Ornamental Corner Accents -->
+      <span style="position:absolute;top:8px;left:10px;color:var(--gold);font-size:12px;opacity:.85;">❧</span>
+      <span style="position:absolute;top:8px;right:10px;color:var(--gold);font-size:12px;opacity:.85;transform:scaleX(-1);">❧</span>
+      <span style="position:absolute;bottom:8px;left:10px;color:var(--gold);font-size:12px;opacity:.85;transform:scaleY(-1);">❧</span>
+      <span style="position:absolute;bottom:8px;right:10px;color:var(--gold);font-size:12px;opacity:.85;transform:scale(-1);">❧</span>
+
+      <!-- AU Monogram -->
+      <div style="display:flex;justify-content:center;margin-bottom:6px;">
+        <img src="./assets/au-monogram.png" alt="AU" class="animate-float"
+          style="width:clamp(54px,14vw,68px);height:clamp(54px,14vw,68px);object-fit:contain;filter:drop-shadow(0 3px 10px rgba(201,157,78,.4));"/>
+      </div>
+
+      <!-- Header -->
+      <p class="fc" style="font-size:clamp(8.5px,2.3vw,10.5px);letter-spacing:.26em;color:#172846;font-weight:700;margin:0 0 2px;">
+        WARM REGARDS
+      </p>
+      <span class="fs" style="font-size:clamp(23px,6.2vw,30px);color:var(--gold-dark);display:block;line-height:1.2;margin-bottom:6px;font-weight:500;">
+        &amp; Best Compliments
+      </span>
+
+      <div class="gd" style="max-width:80px;margin:0 auto 10px;"><span class="l"></span><span class="g" style="font-size:7px;">♥</span><span class="l"></span></div>
+
+      <!-- Families Signature -->
+      <h3 class="fd" style="font-size:clamp(17px,4.8vw,22px);letter-spacing:.05em;text-transform:uppercase;color:#172846;font-weight:700;margin:0 0 2px;line-height:1.25;">
+        Bahedia &amp; Gupta Families
+      </h3>
+      <p class="fc" style="font-size:clamp(8.5px,2.3vw,10px);color:var(--gold-dark);letter-spacing:.22em;font-weight:700;margin:0 0 12px;">
+        &amp; FIRM
+      </p>
+
+      <!-- Couple Signature -->
+      <div style="padding:7px 0;margin:0 0 12px;border-top:.5px solid rgba(201,157,78,.35);border-bottom:.5px solid rgba(201,157,78,.35);">
+        <p class="fs" style="font-size:clamp(26px,7.2vw,34px);color:#172846;margin:0;line-height:1.15;font-weight:600;">
+          Amisha <span style="font-size:.7em;color:var(--gold);font-style:italic;font-weight:400;">&amp;</span> Utkarsh
+        </p>
+        <p class="fd" style="font-size:clamp(10.5px,2.9vw,12.5px);color:#475569;font-style:italic;margin:2px 0 0;font-weight:500;">
+          Together Forever ♡
+        </p>
+      </div>
+
+      <!-- Venue & Directions -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:7px;">
+        <div>
+          <p class="fc" style="font-size:clamp(8px,2.2vw,9.5px);letter-spacing:.2em;color:var(--gold-dark);font-weight:700;margin:0 0 2px;">
+            20TH &amp; 21ST NOVEMBER 2026
+          </p>
+          <p class="fd" style="font-size:clamp(12.5px,3.4vw,14.5px);font-weight:700;color:#172846;margin:0;">
+            The Imperial Prime, Bhilwara
+          </p>
+        </div>
+
+        <a href="https://www.google.com/maps/search/?api=1&query=The+Imperial+Prime+Bhilwara" target="_blank" rel="noopener noreferrer"
+          style="display:inline-flex;align-items:center;gap:6px;border:1px solid var(--gold);border-radius:100px;padding:8px 22px;font-family:var(--font-c);font-size:clamp(8px,2.2vw,9.5px);letter-spacing:.2em;color:#fff;background:linear-gradient(135deg,#172846,#243b66);text-decoration:none;box-shadow:0 4px 14px rgba(23,40,70,.25);transition:transform .2s,box-shadow .2s;margin-top:3px;font-weight:700;">
+          <span>📍</span> GET DIRECTIONS
+        </a>
+      </div>
+
+      <!-- Bottom flourish -->
+      <div style="color:var(--gold);font-size:11px;margin-top:12px;opacity:.9;">
+        ❧ ♥ ☙
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<canvas id="cc" style="position:fixed;inset:0;pointer-events:none;z-index:110;width:100%;height:100%;"></canvas>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+  /* ─── 1. ENVELOPE + MUSIC ─────────────────── */
+  var eo = document.getElementById("eo");
+  var ev = document.getElementById("ev");
+  var bgm = document.getElementById("bgm");
+  var mb = document.getElementById("mb");
+  var mon = false;
+
+  function openEnv() {
+    if (!eo) return;
+    if (ev) ev.play().catch(function(){});
+    if (bgm) {
+      bgm.volume = 0.65;
+      bgm.play().then(function(){ mon=true; mb.classList.remove("muted"); }).catch(function(){});
+    }
+    setTimeout(function(){ boom(0.5,0.4); }, 500);
+    setTimeout(function(){
+      eo.style.opacity="0"; eo.style.pointerEvents="none";
+      setTimeout(function(){ eo.style.display="none"; },1000);
+    }, 1100);
+  }
+  eo.addEventListener("click", openEnv);
+  mb.addEventListener("click", function(e){
+    e.stopPropagation();
+    if (!bgm) return;
+    if (mon) { bgm.pause(); mon=false; mb.classList.add("muted"); }
+    else { bgm.play().then(function(){ mon=true; mb.classList.remove("muted"); }).catch(function(){}); }
+  });
+
+  /* ─── 2. SCROLL REVEAL ────────────────────── */
+  var ris = document.querySelectorAll(".ri");
+  if ("IntersectionObserver" in window) {
+    var obs = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if (e.isIntersecting) {
+          var d = parseInt(e.target.getAttribute("data-delay")||"0",10);
+          setTimeout(function(){ e.target.classList.add("in"); },d);
+        }
+      });
+    },{threshold:.05,rootMargin:"0px 0px -30px 0px"});
+    ris.forEach(function(el){ obs.observe(el); });
+  } else {
+    ris.forEach(function(el){ el.classList.add("in"); });
+  }
+
+  /* ─── 3. SCRATCH CARD ─────────────────────── */
+  var canvas = document.getElementById("sc");
+  var wrap   = document.getElementById("sc-wrap");
+  var cdbox  = document.getElementById("cdbox");
+  var scr    = false;
+  var done   = false;
+
+  if (canvas && wrap) {
+    var ctx = canvas.getContext("2d");
+    var dpr = window.devicePixelRatio || 1;
+
+    function initFoil() {
+      var w = Math.round(wrap.clientWidth || wrap.getBoundingClientRect().width);
+      var h = Math.round(wrap.clientHeight || wrap.getBoundingClientRect().height);
+      if (!w || !h) return;
+      canvas.width  = Math.round(w * dpr);
+      canvas.height = Math.round(h * dpr);
+      canvas.style.width  = "100%";
+      canvas.style.height = "100%";
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+      var g = ctx.createLinearGradient(0,0,w,h);
+      g.addColorStop(0,"#152e55"); g.addColorStop(.5,"#1e3d6e"); g.addColorStop(1,"#152e55");
+      ctx.fillStyle = g; ctx.fillRect(0,0,w,h);
+      // Subtle gold sparkle stars
+      ctx.fillStyle = "rgba(238,206,138,.75)";
+      for (var i=0;i<45;i++){
+        ctx.beginPath();
+        ctx.arc(Math.random()*w, Math.random()*h, Math.random()*1.4+0.3, 0, Math.PI*2);
+        ctx.fill();
+      }
+      // Top gold text
+      ctx.fillStyle="#f3d081";
+      ctx.font="700 12.5px 'Cormorant SC',serif";
+      ctx.textAlign="center"; ctx.textBaseline="middle";
+      ctx.fillText("✦  SCRATCH TO REVEAL  ✦",w/2,h/2-10);
+      // Subtitle text
+      ctx.fillStyle="rgba(255,255,255,.92)";
+      ctx.font="italic 13px 'Cormorant Garamond',serif";
+      ctx.fillText("The Imperial prime , Bhilwara",w/2,h/2+12);
+      ctx.globalCompositeOperation="destination-out";
+    }
+    initFoil();
+    window.addEventListener("resize",function(){ if(!done) initFoil(); });
+    if (window.ResizeObserver) {
+      new ResizeObserver(function(){ if(!done) initFoil(); }).observe(wrap);
+    }
+
+    function scrAt(cx,cy){
+      if(done) return;
+      var r=canvas.getBoundingClientRect();
+      ctx.beginPath(); ctx.arc(cx-r.left,cy-r.top,24,0,Math.PI*2); ctx.fill();
+    }
+
+    function chk(){
+      if(done) return;
+      try{
+        var r=wrap.getBoundingClientRect();
+        var w=Math.floor(r.width*dpr), h=Math.floor(r.height*dpr);
+        if(w<=0||h<=0) return;
+        var data=ctx.getImageData(0,0,w,h).data;
+        var tr=0,tot=0;
+        for(var i=3;i<data.length;i+=4*32){if(data[i]===0)tr++;tot++;}
+        if(tr/tot>0.35){
+          done=true;
+          canvas.style.opacity="0"; canvas.style.pointerEvents="none";
+          boom(0.5,0.5);
+          if(cdbox) cdbox.classList.add("open");
+        }
+      }catch(e){}
+    }
+
+    canvas.addEventListener("pointerdown",function(e){ scr=true; canvas.setPointerCapture(e.pointerId); scrAt(e.clientX,e.clientY); });
+    canvas.addEventListener("pointermove",function(e){ if(scr) scrAt(e.clientX,e.clientY); });
+    canvas.addEventListener("pointerup",  function(){ scr=false; chk(); });
+    canvas.addEventListener("pointercancel",function(){ scr=false; chk(); });
+  }
+
+  /* ─── 4. COUNTDOWN ────────────────────────── */
+  var tgt = new Date("2026-11-20T08:15:00+05:30").getTime();
+  var eD=document.getElementById("tD"), eH=document.getElementById("tH"),
+      eM=document.getElementById("tM"), eS=document.getElementById("tS");
+  function tick(){
+    var d=tgt-Date.now();
+    if(d<=0){eD&&(eD.textContent="00");eH&&(eH.textContent="00");eM&&(eM.textContent="00");eS&&(eS.textContent="00");return;}
+    eD&&(eD.textContent=String(Math.floor(d/86400000)).padStart(2,"0"));
+    eH&&(eH.textContent=String(Math.floor((d%86400000)/3600000)).padStart(2,"0"));
+    eM&&(eM.textContent=String(Math.floor((d%3600000)/60000)).padStart(2,"0"));
+    eS&&(eS.textContent=String(Math.floor((d%60000)/1000)).padStart(2,"0"));
+  }
+  tick(); setInterval(tick,1000);
+
+  /* ─── 5. STORY CAROUSEL ───────────────────── */
+  var slides=document.querySelectorAll(".si"), dotsEl=document.getElementById("dots"),
+      capEl=document.getElementById("cap"), frameEl=document.getElementById("frame"),
+      deckEl=document.getElementById("deck"), cur=0, tot=slides.length;
+
+  function show(n){
+    cur=(n+tot)%tot;
+    slides.forEach(function(s,i){ s.style.opacity=i===cur?"1":"0"; });
+    if(capEl) capEl.textContent=slides[cur].getAttribute("data-c")||"";
+    if(dotsEl){
+      Array.from(dotsEl.children).forEach(function(d,i){
+        d.style.background=i===cur?"#172846":"var(--gold-soft)";
+        d.style.transform=i===cur?"scale(1.25)":"scale(1)";
+      });
+    }
+  }
+  var pb=document.getElementById("pb"), nb=document.getElementById("nb");
+  if(pb) pb.addEventListener("click",function(){ show(cur-1); });
+  if(nb) nb.addEventListener("click",function(){ show(cur+1); });
+
+  if(deckEl){
+    var tx=null;
+    deckEl.addEventListener("touchstart",function(e){ tx=e.touches[0].clientX; },{passive:true});
+    deckEl.addEventListener("touchend",function(e){
+      if(tx===null) return;
+      var d=tx-e.changedTouches[0].clientX;
+      if(d>40) show(cur+1); else if(d<-40) show(cur-1);
+      tx=null;
+    },{passive:true});
+  }
+
+  /* ─── 7. CONFETTI ─────────────────────────── */
+  var cc=document.getElementById("cc");
+  var cCtx=cc?cc.getContext("2d"):null;
+  var pts=[]; var animId=null;
+  if(cc){
+    function rCC(){ cc.width=window.innerWidth; cc.height=window.innerHeight; }
+    rCC(); window.addEventListener("resize",rCC);
+  }
+  function boom(ox,oy){
+    if(!cCtx) return;
+    var cols=["#c99d4e","#dcc188","#172846","#f5eccf","#fff","#e0838a"];
+    var sx=window.innerWidth*ox, sy=window.innerHeight*oy;
+    for(var i=0;i<80;i++){
+      var a=Math.random()*Math.PI*2, v=Math.random()*7+2.5;
+      pts.push({x:sx,y:sy,vx:Math.cos(a)*v,vy:Math.sin(a)*v-2.5,s:Math.random()*5+3,
+        c:cols[Math.floor(Math.random()*cols.length)],r:Math.random()*360,vr:(Math.random()-.5)*8,
+        a:1,g:.14,d:Math.random()*.012+.008});
+    }
+    if(!animId) anim();
+  }
+  function anim(){
+    if(!cCtx) return;
+    cCtx.clearRect(0,0,cc.width,cc.height);
+    for(var i=pts.length-1;i>=0;i--){
+      var p=pts[i];
+      p.x+=p.vx; p.y+=p.vy; p.vy+=p.g; p.r+=p.vr; p.a-=p.d;
+      if(p.a<=0){pts.splice(i,1);continue;}
+      cCtx.save();
+      cCtx.translate(p.x,p.y); cCtx.rotate(p.r*Math.PI/180);
+      cCtx.globalAlpha=p.a; cCtx.fillStyle=p.c;
+      cCtx.fillRect(-p.s/2,-p.s/2,p.s,p.s*.65);
+      cCtx.restore();
+    }
+    if(pts.length>0){ animId=requestAnimationFrame(anim); }
+    else{ animId=null; cCtx.clearRect(0,0,cc.width,cc.height); }
+  }
+
+});
+</script>
+</body>
+</html>
